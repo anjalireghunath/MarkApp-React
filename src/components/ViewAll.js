@@ -1,29 +1,16 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useState } from 'react'
 import Header from './Header'
 
 const ViewAll = () => {
-    var viewstudent=[
-        {
-            "name":"Anjali",
-            "admno":"123",
-            "cgpa":"86"
-        },
-        {
-            "name":"Adhi",
-            "admno":"121",
-            "cgpa":"87"
-        },
-        {
-            "name":"sruthy",
-            "admno":"128",
-            "cgpa":"85"
-        },
-        {
-            "name":"Divya",
-            "admno":"126",
-            "cgpa":"86"
-        }
-    ]
+    var [viewstudent,setViewstudent]=useState([])
+    axios.get('http://localhost:4001/api/viewall').then(
+      (response)=>{
+        console.log(response.data)
+        setViewstudent(response.data)
+      }
+    )
+    
   return (
     <div>
 

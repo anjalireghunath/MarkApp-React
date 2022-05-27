@@ -1,3 +1,4 @@
+import axios from 'axios'
 import React, { useState } from 'react'
 import Header from './Header'
 
@@ -8,6 +9,17 @@ const AddStudent = () => {
     const addStud=()=>{
         const data={"name":name,"admno":admno,"cgpa":cgpa}
         console.log(data)
+        axios.post("http://localhost:4001/api/addmark",data).then((response)=>{
+            console.log(response.data)
+            if(response.data.status=="success")
+            {
+                alert("successfully added")
+            }
+            else
+            {
+alert("failed to add")
+            }
+        })
     }
   return (
     <div>
