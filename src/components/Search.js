@@ -14,8 +14,8 @@ const Search = () => {
    var [admno,setAdmno]=useState("")
 
     const deleteData=(id)=>{
-    const remove={"_id":id}
-      console.log(remove)
+    const data={"_id":id}
+      console.log(data)
       axios.post("http://localhost:4001/api/delete",data).then((response)=>{
           if(response.data.status=="success")
           {
