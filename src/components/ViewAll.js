@@ -10,6 +10,20 @@ const ViewAll = () => {
         setViewstudent(response.data)
       }
     )
+    const deleteData=(id)=>{
+      const data={"_id":id}
+        console.log(data)
+        axios.post("http://localhost:4001/api/delete",data).then((response)=>{
+            if(response.data.status=="success")
+            {
+                alert("successfully deleted")
+            }
+            else
+            {
+                alert("error")
+            }
+        })
+    }
     
   return (
     <div>
@@ -27,6 +41,7 @@ const ViewAll = () => {
       <th scope="col">Name</th>
       <th scope="col">AdmNo</th>
       <th scope="col">CGPA</th>
+      <th scope="col">Action</th>
       
     </tr>
   </thead>
@@ -36,6 +51,7 @@ const ViewAll = () => {
       <td>{value.name}</td>
       <td>{value.admno}</td>
       <td>{value.cgpa}</td>
+      <button onClick={()=>{deleteData(value._id)}} className='btn btn-success'>DELETE</button>
     </tr>
     })}
     
