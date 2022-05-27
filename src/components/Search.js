@@ -10,7 +10,24 @@ const Search = () => {
        }
       
    ])
+
    var [admno,setAdmno]=useState("")
+
+    const deleteData=(id)=>{
+    const remove={"_id":id}
+      console.log(remove)
+      axios.post("http://localhost:4001/api/delete",data).then((response)=>{
+          if(response.remove.status=="success")
+          {
+              alert("successfully deleted")
+          }
+          else
+          {
+              alert("error")
+          }
+      })
+  }
+
    const searchData=()=>{
        const data={"admno":admno}
        console.log(data)
@@ -21,6 +38,8 @@ const Search = () => {
           
        })
    }
+
+  
    
   return (
     <div>
@@ -53,8 +72,12 @@ const Search = () => {
             <label className='form-label'>CGPA</label>
             <input type="text"  className="form-control" value={value.cgpa} />
         </div>
+        </div>
+        <div className='col col-12 col-sm-6 col-md-6 col-lg-6 col-xl-6 col-xxl-6'>
+        <button onClick={()=>{deleteData(value._id)}} className='btn btn-danger'>DELETE</button>
 </div>
     </div>
+    
 })}
 
     </div>
