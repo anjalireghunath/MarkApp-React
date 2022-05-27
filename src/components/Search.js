@@ -17,7 +17,7 @@ const Search = () => {
     const remove={"_id":id}
       console.log(remove)
       axios.post("http://localhost:4001/api/delete",data).then((response)=>{
-          if(response.remove.status=="success")
+          if(response.data.status=="success")
           {
               alert("successfully deleted")
           }
