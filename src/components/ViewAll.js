@@ -41,6 +41,7 @@ const ViewAll = () => {
       <th scope="col">Name</th>
       <th scope="col">AdmNo</th>
       <th scope="col">CGPA</th>
+      <th scope="col">Action</th>
       
     </tr>
   </thead>
